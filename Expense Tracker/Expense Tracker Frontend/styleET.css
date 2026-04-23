@@ -1,0 +1,147 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Arial, sans-serif;
+}
+
+html, body {
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body{
+  min-height:100vh;
+  background: linear-gradient(135deg, #f5f5dc, #fffaf0);
+  padding:20px;
+  display:flex;
+  flex-direction:column;
+}
+
+
+#heading{
+  text-align:center;
+  color:#8b4513;
+  font-size:32px;
+  margin-bottom:10px;
+}
+
+hr{
+  margin:20px 0;
+  border: none;
+  height: 1px;
+  background: #ccc;
+}
+
+
+h3{
+  margin:10px 0;
+  color:#333;
+}
+
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  border-radius:10px;
+   table-layout: fixed;
+  overflow:hidden;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+}
+
+th{
+  background:#8b4513;
+  color:white;
+  padding:10px;
+}
+
+td{
+  padding:10px;
+  text-align:center;
+}
+
+tr:hover{
+  background:#f9f3e6;
+}
+
+
+input, select{
+  padding:8px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  outline:none;
+  width:100%;
+  transition:0.2s;
+}
+
+input:focus, select:focus{
+  border-color:#8b4513;
+  box-shadow:0 0 5px rgba(139,69,19,0.3);
+}
+
+.chart-card{
+  position: relative;
+  width: 350px;
+  margin: 20px auto;
+  right:20px;
+  padding: 15px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  text-align: center;
+}
+
+.chart-wrapper {
+  position: relative;
+  height: 250px;
+  width: 250px;
+  margin: 0 auto;
+  overflow:hidden;
+}
+#expenseChart {
+  width: 100% !important;
+  height: 100% !important;
+  display: block;
+}
+
+button{
+  padding:8px 14px;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+  font-weight:bold;
+}
+
+#addExpensebtn{
+  background:#28a745;
+  color:white;
+}
+
+#addExpensebtn:hover{
+  background:#218838;
+}
+
+.deleteBtn{
+  background:#dc3545;
+  color:white;
+}
+
+.deleteBtn:hover{
+  background:#c82333;
+}
+
+#transactionHistory {
+  margin-bottom: 30px;
+}
+
+
+footer{
+  margin-top:auto;
+  text-align:center;
+  padding:15px;
+  background:#8b4513;
+  color:white;
+  border-radius:10px;
+}

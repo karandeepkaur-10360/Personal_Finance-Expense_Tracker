@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker</title>
+    <link rel="stylesheet" href="styleET.css">
+</head>
+
+<body>
+    <h1 id="heading"><i>Expense Tracker</i></h1>
+    <hr>
+    <h3 id="totalIncome">Total Expense: Rs. 0</h3>
+   
+    <br>
+    <div class="chart-card">
+    <h3>Expense Chart</h3>
+    <div class="chart-wrapper">
+        <canvas id="expenseChart"></canvas>
+    </div>
+</div>
+    <h3>Transactions</h3>
+
+    <section>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Description</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Date</th>
+                    <th>Add</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><input type="text" id="expenseType" placeholder="Enter expense description"></td>
+                    <td><input type="number" id="expenseAmount" placeholder="Enter amount"></td>
+                    <td>
+                        <select id="expenseCategory">
+                            <option value="Food">Food</option>
+                            <option value="Transport">Transport</option>
+                            <option value="Shopping">Shopping</option>
+                            <option value="Bills">Bills</option>
+                        </select>
+                    </td>
+
+                    <td><input type="date" id="ExpenseDate"></td>
+
+                    <td><button id="addExpensebtn">Add Expense</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <br><br>
+
+    <section id="transactionHistory">
+        <h3>Transaction History</h3>
+
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Category</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+
+            <tbody></tbody>
+        </table>
+    </section>
+
+    <footer>
+        <p>© 2026 Personal Expense Tracker</p>
+    </footer>
+
+    <script src="ETscript.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>
