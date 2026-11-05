@@ -3,23 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Tracker</title>
+    <title>Expense Tracker & Budget - BudgetFlow</title>
     <link rel="stylesheet" href="styleET.css">
 </head>
 
 <body>
-    <h1 id="heading"><i>Expense Tracker</i></h1>
-    <hr>
-    <h3 id="totalIncome">Total Expense: Rs. 0</h3>
-   
-    <br>
-    <div class="chart-card">
-    <h3>Expense Chart</h3>
-    <div class="chart-wrapper">
-        <canvas id="expenseChart"></canvas>
+    <div class="Navbar">
+        <h3 id="mainHeading">BudgetFlow</h3>
+
+        <nav id="anchors"> 
+            <a href="home.html">Home</a> |
+            <a href="index1.html">Track Expenses</a> |
+            <a href="javascript:void(0)" id="logoutBtn">Logout</a>
+        </nav>
     </div>
-</div>
-    <h3>Transactions</h3>
+
+    <h1 id="heading"><i>BudgetFlow</i></h1>
+    <hr>
+
+    <!-- Top Dashboard: Budget & Chart Cards -->
+    <div class="dashboard-top">
+        <!-- Monthly Budget & Alerts Card -->
+        <div class="budget-card">
+            <div class="budget-header">
+                <div class="budget-title-group">
+                    <h3>Monthly Budget</h3>
+                    <input type="month" id="selectedMonthInput" class="budget-month-select" title="Select Month" />
+                </div>
+                <button id="openBudgetModalBtn" class="btn-sm">Set Budget</button>
+            </div>
+
+            <!-- Dynamic Alert Banner -->
+            <div id="budgetAlertBanner" class="alert-banner alert-info">
+                <span id="alertIcon">ℹ️</span>
+                <span id="alertText">Loading budget status...</span>
+            </div>
+
+            <!-- Budget Stats Grid -->
+            <div class="budget-stats-grid">
+                <div class="stat-box">
+                    <span class="stat-label">Budget Limit</span>
+                    <span class="stat-value" id="budgetLimitVal">Rs. 0.00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Spent This Month</span>
+                    <span class="stat-value" id="budgetSpentVal">Rs. 0.00</span>
+                </div>
+                <div class="stat-box">
+                    <span class="stat-label">Remaining</span>
+                    <span class="stat-value" id="budgetRemainingVal">Rs. 0.00</span>
+                </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="budget-progress-container">
+                <div class="budget-progress-bar" id="budgetProgressBar"></div>
+            </div>
+            <div class="budget-progress-labels">
+                <span id="budgetPercentLabel">0% used</span>
+                <span id="budgetRemainingLabel">Rs. 0.00 remaining</span>
+            </div>
+
+            <!-- Category Limits Breakdown Pills -->
+            <div class="category-budget-pills" id="categoryBudgetPills"></div>
+        </div>
+
+        <!-- Expense Pie Chart Card -->
+        <div class="chart-card">
+            <h3>Expense Breakdown</h3>
+            <div class="chart-wrapper">
+                <canvas id="expenseChart"></canvas>
+            </div>
+            <h4 id="totalIncome" style="margin-top: 10px; color: #8b4513;">Total Expense: Rs. 0.00</h4>
+        </div>
+    </div>
+
+    <!-- Set Budget Modal -->
+    <div id="budgetModal" class="modal-overlay" style="display: none;">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Set Monthly Budget</h3>
+                <button type="button" id="closeBudgetModalBtn" class="close-btn">&times;</button>
+            </div>
+            <form id="budgetForm">
+                <label for="budgetMonthInput">Target Month</label>
+                <input type="month" id="budgetMonthInput" required />
+
+                <label for="monthlyLimitInput">Total Monthly Budget Limit (Rs.)</label>
+                <input type="number" id="monthlyLimitInput" placeholder="e.g. 25000" min="0" step="any" required />
+
+                <details class="category-limits-accordion">
+                    <summary>Optional: Category Limits (Rs.)</summary>
+                    <div class="category-input-group">
+                        <label for="foodLimitInput">Food Limit</label>
+                        <input type="number" id="foodLimitInput" placeholder="e.g. 8000" min="0" step="any" />
+                        
+                        <label for="transportLimitInput">Transport Limit</label>
+                        <input type="number" id="transportLimitInput" placeholder="e.g. 4000" min="0" step="any" />
+                        
+                        <label for="shoppingLimitInput">Shopping Limit</label>
+                        <input type="number" id="shoppingLimitInput" placeholder="e.g. 5000" min="0" step="any" />
+                        
+                        <label for="billsLimitInput">Bills Limit</label>
+                        <input type="number" id="billsLimitInput" placeholder="e.g. 8000" min="0" step="any" />
+                    </div>
+                </details>
+
+                <div class="modal-actions">
+                    <button type="button" id="cancelBudgetBtn" class="btn secondary">Cancel</button>
+                    <button type="submit" id="saveBudgetBtn" class="btn primary">Save Budget</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <h3>Add Expense</h3>
 
     <section>
         <table border="1">
@@ -29,7 +127,7 @@
                     <th>Amount</th>
                     <th>Category</th>
                     <th>Date</th>
-                    <th>Add</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -67,6 +165,7 @@
                     <th>Category</th>
                     <th>Type</th>
                     <th>Amount</th>
+                    <th>Action</th>
                 </tr>
             </thead>
 
@@ -78,7 +177,7 @@
         <p>© 2026 Personal Expense Tracker</p>
     </footer>
 
-    <script src="ETscript.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="ETscript.js"></script>
 </body>
 </html>
