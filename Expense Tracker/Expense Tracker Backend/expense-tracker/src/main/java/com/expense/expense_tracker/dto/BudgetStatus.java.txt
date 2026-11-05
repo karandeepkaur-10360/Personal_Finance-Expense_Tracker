@@ -1,0 +1,68 @@
+package com.expense.expense_tracker.dto;
+
+import java.util.Map;
+
+public class BudgetStatusResponse {
+    private String month;
+    private double monthlyLimit;
+    private double totalSpent;
+    private double remaining;
+    private double percentage;
+    private String status; // "OK", "WARNING", "EXCEEDED", "NO_LIMIT"
+    private String alertMessage;
+    private Map<String, CategoryBudgetStatus> categories;
+
+    public static class CategoryBudgetStatus {
+        private double spent;
+        private double limit;
+        private double percentage;
+        private String status; // "OK", "WARNING", "EXCEEDED", "NO_LIMIT"
+
+        public CategoryBudgetStatus() {}
+
+        public CategoryBudgetStatus(double spent, double limit, double percentage, String status) {
+            this.spent = spent;
+            this.limit = limit;
+            this.percentage = percentage;
+            this.status = status;
+        }
+
+        public double getSpent() { return spent; }
+        public void setSpent(double spent) { this.spent = spent; }
+
+        public double getLimit() { return limit; }
+        public void setLimit(double limit) { this.limit = limit; }
+
+        public double getPercentage() { return percentage; }
+        public void setPercentage(double percentage) { this.percentage = percentage; }
+
+        public String getStatus() { return status; }
+        public void setStatus(String status) { this.status = status; }
+    }
+
+    public BudgetStatusResponse() {}
+
+    public String getMonth() { return month; }
+    public void setMonth(String month) { this.month = month; }
+
+    public double getMonthlyLimit() { return monthlyLimit; }
+    public void setMonthlyLimit(double monthlyLimit) { this.monthlyLimit = monthlyLimit; }
+
+    public double getTotalSpent() { return totalSpent; }
+    public void setTotalSpent(double totalSpent) { this.totalSpent = totalSpent; }
+
+    public double getRemaining() { return remaining; }
+    public void setRemaining(double remaining) { this.remaining = remaining; }
+
+    public double getPercentage() { return percentage; }
+    public void setPercentage(double percentage) { this.percentage = percentage; }
+
+    public String getStatus() { return status; }
+    public void setStatus(String status) { this.status = status; }
+
+    public String getAlertMessage() { return alertMessage; }
+    public void setAlertMessage(String alertMessage) { this.alertMessage = alertMessage; }
+
+    public Map<String, CategoryBudgetStatus> getCategories() { return categories; }
+    public void setCategories(Map<String, CategoryBudgetStatus> categories) { this.categories = categories; }
+}
