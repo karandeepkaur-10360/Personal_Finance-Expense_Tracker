@@ -18,7 +18,6 @@ body{
   flex-direction:column;
 }
 
-
 #heading{
   text-align:center;
   color:#8b4513;
@@ -33,19 +32,17 @@ hr{
   background: #ccc;
 }
 
-
 h3{
   margin:10px 0;
   color:#333;
 }
-
 
 table{
   width:100%;
   border-collapse:collapse;
   background:white;
   border-radius:10px;
-   table-layout: fixed;
+  table-layout: fixed;
   overflow:hidden;
   box-shadow:0 4px 10px rgba(0,0,0,0.1);
 }
@@ -65,7 +62,6 @@ tr:hover{
   background:#f9f3e6;
 }
 
-
 input, select{
   padding:8px;
   border:1px solid #ccc;
@@ -80,31 +76,227 @@ input:focus, select:focus{
   box-shadow:0 0 5px rgba(139,69,19,0.3);
 }
 
-.chart-card{
-  position: relative;
-  width: 350px;
-  margin: 20px auto;
-  right:20px;
-  padding: 15px;
+/* Dashboard Layout */
+.dashboard-top {
+  display: flex;
+  gap: 25px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+/* Budget Card */
+.budget-card {
+  flex: 1 1 500px;
   background: white;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.budget-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.budget-title-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.budget-title-group h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #8b4513;
+}
+
+.budget-month-select {
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 13px;
+  width: auto;
+  cursor: pointer;
+}
+
+/* Alert Banner */
+.alert-banner {
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: 0.3s;
+}
+
+.alert-ok {
+  background: #e8f5e9;
+  border: 1px solid #81c784;
+  color: #2e7d32;
+}
+
+.alert-warning {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  color: #b76e00;
+  animation: pulse-border 2s infinite;
+}
+
+.alert-exceeded {
+  background: #ffebee;
+  border: 2px solid #e57373;
+  color: #c62828;
+  animation: pulse-danger 1.5s infinite;
+}
+
+.alert-info {
+  background: #f5f5f5;
+  border: 1px solid #ddd;
+  color: #666;
+}
+
+@keyframes pulse-danger {
+  0% { box-shadow: 0 0 0 0 rgba(229, 115, 115, 0.4); }
+  70% { box-shadow: 0 0 0 6px rgba(229, 115, 115, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(229, 115, 115, 0); }
+}
+
+@keyframes pulse-border {
+  0% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0.4); }
+  70% { box-shadow: 0 0 0 5px rgba(255, 179, 0, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(255, 179, 0, 0); }
+}
+
+/* Budget Stats Grid */
+.budget-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+}
+
+.stat-box {
+  background: #fdfaf6;
+  border: 1px solid #eee4db;
+  border-radius: 8px;
+  padding: 12px 14px;
+  display: flex;
+  flex-direction: column;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: #777;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-top: 4px;
+}
+
+/* Progress Bar */
+.budget-progress-container {
+  width: 100%;
+  height: 14px;
+  background: #eee;
+  border-radius: 7px;
+  overflow: hidden;
+  position: relative;
+}
+
+.budget-progress-bar {
+  height: 100%;
+  width: 0%;
+  border-radius: 7px;
+  transition: width 0.4s ease, background 0.4s ease;
+}
+
+.progress-ok {
+  background: #28a745;
+}
+
+.progress-warning {
+  background: #f57f17;
+}
+
+.progress-exceeded {
+  background: #dc3545;
+}
+
+.budget-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: #666;
+}
+
+/* Category Pills */
+.category-budget-pills {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.category-pill {
+  background: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  padding: 5px 12px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.pill-ok .pill-dot { background: #28a745; }
+.pill-warning .pill-dot { background: #f57f17; }
+.pill-exceeded .pill-dot { background: #dc3545; }
+.pill-no-limit .pill-dot { background: #bbb; }
+
+/* Chart Card */
+.chart-card{
+  flex: 0 0 340px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+  padding: 20px;
   text-align: center;
+  margin: 0;
 }
 
 .chart-wrapper {
   position: relative;
-  height: 250px;
-  width: 250px;
+  height: 220px;
+  width: 220px;
   margin: 0 auto;
-  overflow:hidden;
 }
+
 #expenseChart {
   width: 100% !important;
   height: 100% !important;
   display: block;
 }
 
+/* Buttons */
 button{
   padding:8px 14px;
   border:none;
@@ -112,6 +304,18 @@ button{
   cursor:pointer;
   transition:0.3s;
   font-weight:bold;
+}
+
+.btn-sm {
+  padding: 6px 12px;
+  font-size: 13px;
+  background: #8b4513;
+  color: white;
+  border-radius: 6px;
+}
+
+.btn-sm:hover {
+  background: #6f370f;
 }
 
 #addExpensebtn{
@@ -136,7 +340,6 @@ button{
   margin-bottom: 30px;
 }
 
-
 footer{
   margin-top:auto;
   text-align:center;
@@ -144,4 +347,299 @@ footer{
   background:#8b4513;
   color:white;
   border-radius:10px;
+}
+
+/* Navbar */
+.Navbar{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+  color:#8b4513;
+  padding: 15px 40px;
+  margin-bottom:10px;
+}
+
+#mainHeading{
+  font-size: 32px;
+  color:#8b4513;
+}
+
+#anchors a {
+  text-decoration: none;
+  color: #8b4513;
+  margin-left: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+#anchors a:hover {
+  color: #5a2c0c;
+  text-decoration: underline;
+}
+
+/* Homepage */
+.content-section{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  gap:40px;
+}
+
+.content-text h1{
+  font-size : 40px;
+}
+
+.content-text span {
+  color: #8b4513;
+}
+
+.content-text p {
+  text-align: left;
+  margin-top: 10px;
+  color: #555;
+  font-size: 18px;
+}
+
+.buttons{
+  display: flex;
+  gap: 15px;
+  margin-top: 25px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: bold;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+.primary {
+  background: #8b4513;
+  color: white;
+  border: none;
+}
+
+.primary:hover {
+  background: #6f370f;
+}
+
+.secondary {
+  border: 2px solid #8b4513;
+  color: #8b4513;
+  background: transparent;
+}
+
+.secondary:hover {
+  background: #8b4513;
+  color: white;
+}
+
+.features {
+  text-align: center;
+  padding: 40px 40px 60px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 260px;
+  padding: 25px 20px;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+  transition: 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.card img, .card svg {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  font-size: 18px;
+  margin-bottom: 8px;
+  color: #8b4513;
+}
+
+.card p {
+  font-size: 14px;
+  color: #666;
+}
+
+/* Authentication */
+.auth-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  flex: 1;
+}
+
+.auth-container h2 {
+  color: #8b4513;
+  margin-bottom: 20px;
+  font-size: 28px;
+}
+
+form#login, form#signup {
+  background: white;
+  padding: 35px 30px;
+  width: 340px;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form#login input, form#signup input {
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+form#login button, form#signup button {
+  background: #8b4513;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
+
+form#login button:hover, form#signup button:hover {
+  background: #6f370f;
+}
+
+form#login p, form#signup p {
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+form#login a, form#signup a {
+  color: #8b4513;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+form#login a:hover, form#signup a:hover {
+  text-decoration: underline;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-card {
+  background: white;
+  border-radius: 14px;
+  padding: 28px;
+  width: 400px;
+  max-width: 90vw;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #8b4513;
+  font-size: 20px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #888;
+  padding: 0;
+  line-height: 1;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+#budgetForm {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+#budgetForm label {
+  font-size: 13px;
+  font-weight: bold;
+  color: #444;
+  margin-bottom: 2px;
+}
+
+.category-limits-accordion {
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 10px;
+  background: #fafafa;
+}
+
+.category-limits-accordion summary {
+  font-size: 13px;
+  font-weight: bold;
+  color: #8b4513;
+  cursor: pointer;
+}
+
+.category-input-group {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
 }
